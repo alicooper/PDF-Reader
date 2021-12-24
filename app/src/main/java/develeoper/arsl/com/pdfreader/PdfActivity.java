@@ -18,8 +18,8 @@ public class PdfActivity extends AppCompatActivity implements OnPageChangeListen
     PDFView pdfView;
     Integer pageNumber = 0;
     String pdfFileName;
-    String TAG="PdfActivity";
-    int position=-1;
+    String TAG = "PdfActivity";
+    int position = -1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

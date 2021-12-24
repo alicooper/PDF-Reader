@@ -3,7 +3,9 @@ package develeoper.arsl.com.pdfreader;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Environment;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,6 +21,10 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    ImageButton btn_filePicker;
+    Intent myFileIntent;
+
     ListView lv_pdf;
     public static ArrayList<File> fileList = new ArrayList<File>();
     PDFAdapter obj_adapter;
@@ -29,9 +36,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        btn_filePicker = findViewById(R.id.btn_openPdf);
+        btn_filePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                myFileIntent.setType("application/pdf");
+                startActivityForResult(myFileIntent, 10);
+            }
+        });
         init();
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 10:
+                if (resultCode == RESULT_OK) {
+                    Uri path = data.getData();
+
+                    Intent intent = new Intent(this ,ShowPdf.class);
+                    intent.putExtra("path",path.toString());
+                    startActivity(intent);
+//                    Log.i("test",path);
+
+                }
+                break;
+        }
+    }
+
 
     private void init() {
 
@@ -47,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("position", i);
                 startActivity(intent);
 
-        
             }
         });
     }

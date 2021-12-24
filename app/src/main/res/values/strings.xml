@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PDF Reader</string>
+    <string name="read_and_edit_pdfs">read_and_edit_pdfs</string>
 </resources>

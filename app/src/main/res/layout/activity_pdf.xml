@@ -6,9 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".PdfActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfView"
-    android:layout_margin="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="0dp" />
 </RelativeLayout>
