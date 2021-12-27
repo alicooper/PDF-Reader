@@ -19,10 +19,12 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageButton btn_filePicker;
+    ImageButton bookmarkB;
     Intent myFileIntent;
 
     ListView lv_pdf;
@@ -43,6 +45,16 @@ public class MainActivity extends AppCompatActivity {
                 myFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 myFileIntent.setType("application/pdf");
                 startActivityForResult(myFileIntent, 10);
+            }
+        });
+
+        bookmarkB = findViewById(R.id.imageButton2);
+        bookmarkB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this ,BookmarkActivity.class);
+//                intent.putExtra("path",path.toString());
+                startActivity(intent);
             }
         });
         init();
@@ -72,15 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
         lv_pdf = (ListView) findViewById(R.id.lv_pdf);
         dir = new File(Environment.getExternalStorageDirectory().toString());
-      //  dir = new File(String.valueOf(Environment.getExternalStorageDirectory()));
         fn_permission();
 
         lv_pdf.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getApplicationContext(), PdfActivity.class);
-                intent.putExtra("position", i);
-                startActivity(intent);
 
             }
         });
@@ -158,5 +166,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 
 }

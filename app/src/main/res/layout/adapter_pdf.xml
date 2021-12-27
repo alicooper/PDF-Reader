@@ -8,6 +8,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="19dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
     <ImageView
         android:id="@+id/iv_image"
         android:layout_width="60dp"
@@ -17,19 +26,23 @@
         android:scaleType="fitXY"
         android:src="@mipmap/pdf_logo" />
 
-<TextView
-    android:id="@+id/tv_name"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerVertical="true"
-    android:layout_gravity="center"
-    android:layout_marginLeft="10dp"
-    android:layout_toRightOf="@+id/iv_image"
-    android:ellipsize="end"
-    android:maxLines="1"
-    android:paddingRight="10dp"
-    android:text="name"
-    android:textColor="#000000"
-    android:textSize = "15dp" />
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/iv_image"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingRight="10dp"
+        android:text="name"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:translationZ="90dp"
+        />
 
-    </RelativeLayout>
+
+
+</RelativeLayout>

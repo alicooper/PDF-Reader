@@ -1,16 +1,25 @@
 package develeoper.arsl.com.pdfreader;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class PDFAdapter extends ArrayAdapter<File> {
+    Data_Access access;
+
     Context context;
     ViewHolder viewHolder;
     ArrayList<File> al_pdf;
@@ -18,9 +27,10 @@ public class PDFAdapter extends ArrayAdapter<File> {
     public PDFAdapter(Context context, ArrayList<File> al_pdf) {
         super(context, R.layout.adapter_pdf, al_pdf);
         this.context = context;
+        access = new Data_Access(context);
         this.al_pdf = al_pdf;
-
     }
+
     @Override
     public int getItemViewType(int position) {
         return position;
@@ -40,7 +50,9 @@ public class PDFAdapter extends ArrayAdapter<File> {
         if (view == null) {
             view = LayoutInflater.from(getContext()).inflate(R.layout.adapter_pdf, parent, false);
             viewHolder = new ViewHolder();
-            viewHolder.tv_filename = (TextView) view.findViewById(R.id.tv_name);
+            viewHolder.tv_filename = view.findViewById(R.id.tv_name);
+            viewHolder.favorite = view.findViewById(R.id.checkBox);
+
 
             view.setTag(viewHolder);
         } else {
@@ -48,14 +60,41 @@ public class PDFAdapter extends ArrayAdapter<File> {
 
         }
 
+        viewHolder.favorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    access.openDB();
+                    access.addNewNote(new select_pdf(al_pdf.get(position).getPath(), al_pdf.get(position).getName(),
+                            "1"));
+                    access.closeDB();
+                } else {
+                    access.openDB();
+                    access.deleteBYADD(al_pdf.get(position).getName());
+                    access.closeDB();
+                }
+            }
+        });
+
+
         viewHolder.tv_filename.setText(al_pdf.get(position).getName());
+        viewHolder.tv_filename.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PdfActivity.class);
+                intent.putExtra("position", position);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
         return view;
 
     }
 
+
     public class ViewHolder {
 
+        CheckBox favorite;
         TextView tv_filename;
     }
-
 }
