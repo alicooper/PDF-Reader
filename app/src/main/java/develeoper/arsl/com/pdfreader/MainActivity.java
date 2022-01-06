@@ -52,12 +52,15 @@ public class MainActivity extends AppCompatActivity {
         bookmarkB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bookmarkB.setImageResource(R.drawable.icon_bookmarkred);
                 Intent intent = new Intent(MainActivity.this ,BookmarkActivity.class);
 //                intent.putExtra("path",path.toString());
                 startActivity(intent);
             }
         });
         init();
+
+
 
     }
 

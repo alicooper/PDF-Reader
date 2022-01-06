@@ -11,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -36,6 +37,7 @@ public class BookmarkActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bookmark);
         btn_filePicker = findViewById(R.id.btn_openPdf);
@@ -53,6 +55,7 @@ public class BookmarkActivity extends AppCompatActivity {
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btn_home.setImageResource(R.drawable.homered);
                 Intent intent = new Intent(BookmarkActivity.this ,MainActivity.class);
 //                intent.putExtra("path",path.toString());
                 startActivity(intent);

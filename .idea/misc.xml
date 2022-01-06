@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/PDF-Reader-Final/app/src/main/res/layout/activity_main.xml" value="0.14990942028985507" />
+        <entry key="..\:/PDF-Reader-Final/app/src/main/res/layout/activity_pdf.xml" value="0.14990942028985507" />
+        <entry key="..\:/PDF-Reader-Final/app/src/main/res/layout/adapter_pdf.xml" value="0.14990942028985507" />
+        <entry key="..\:/PDF-Reader-Final/app/src/main/res/layout/bookmark.xml" value="0.14990942028985507" />
+        <entry key="..\:/PDF-Reader-Final/app/src/main/res/layout/splash.xml" value="0.14990942028985507" />
+        <entry key="..\:/PDF-Reader-Final/app/src/main/res/layout/toolbar.xml" value="0.14990942028985507" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/PDF-Reader-Android-App/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/PDF-Reader-Android-App/app/src/main/res/layout/activity_pdf.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/PDF-Reader-Android-App/app/src/main/res/layout/adapter_pdf.xml" value="0.1956521739130435" />
